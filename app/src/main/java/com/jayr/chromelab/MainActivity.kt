@@ -20,7 +20,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ChromeLabTheme {
-                LoginScreen()
+                Scaffold (modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    LoginScreen(modifier = Modifier.padding(innerPadding))
+                }
             }
         }
     }
