@@ -2,13 +2,16 @@ package com.jayr.chromelab.ui.screens.authentication.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Phone
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,12 +26,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.jayr.chromelab.R
+import com.jayr.chromelab.ui.components.LottieAnimationWidget
 
 @Composable
 fun LoginScreen(modifier: Modifier){
@@ -42,7 +47,7 @@ fun LoginScreen(modifier: Modifier){
             modifier= modifier
         ){
             //        lottie animation
-            LottieAnimationWidget()
+            LottieAnimationWidget(R.raw.auth_login,300.dp)
 
             //        email input
             OutlinedTextField(
@@ -77,18 +82,19 @@ fun LoginScreen(modifier: Modifier){
                 modifier = Modifier.fillMaxWidth()
             )
             //        button
+            OutlinedButton(
+                onClick = {}
+            ) {
+                Text(text = "login",
+                    modifier = Modifier.padding(horizontal = 24.dp))
+            }
+
+//             row
+            Row(){
+                Text(text = "Forgot Password")
+                Text(text = "No account?")
+            }
         }
 }
 
 
-@Composable
-fun LottieAnimationWidget() {
-    val composition by
-    rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.auth_login))
-    val progress by animateLottieCompositionAsState(composition)
-    LottieAnimation(
-        composition = composition,
-        progress = { progress },
-        modifier = Modifier.size(350.dp)
-    )
-}
