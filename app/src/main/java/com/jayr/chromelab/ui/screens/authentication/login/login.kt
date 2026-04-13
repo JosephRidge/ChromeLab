@@ -34,6 +34,7 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.jayr.chromelab.R
 import com.jayr.chromelab.ui.components.LottieAnimationWidget
+import com.jayr.chromelab.ui.components.pagePadding
 
 @Composable
 fun LoginScreen(modifier: Modifier){
@@ -44,7 +45,7 @@ fun LoginScreen(modifier: Modifier){
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier= modifier
+            modifier= modifier.padding(pagePadding)
         ){
             //        lottie animation
             LottieAnimationWidget(R.raw.auth_login,300.dp)
