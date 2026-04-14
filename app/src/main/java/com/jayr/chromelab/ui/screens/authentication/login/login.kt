@@ -1,6 +1,5 @@
 package com.jayr.chromelab.ui.screens.authentication.login
 
-import android.widget.Space
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,6 +13,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -30,7 +30,9 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jayr.chromelab.R
@@ -44,6 +46,7 @@ fun LoginScreen(modifier: Modifier) {
 //     inputs
     var emailInput by remember { mutableStateOf(TextFieldValue("")) }
     var passwordInput by remember { mutableStateOf(TextFieldValue("")) }
+    var isVisible by remember { mutableStateOf(false) }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -68,7 +71,6 @@ fun LoginScreen(modifier: Modifier) {
         Spacer(modifier = Modifier.height(24.dp))
 
 
-
         //        email input
         OutlinedTextField(
             value = emailInput,
@@ -76,7 +78,8 @@ fun LoginScreen(modifier: Modifier) {
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Outlined.Email,
-                    contentDescription = "Email"
+                    contentDescription = "Email",
+                    tint = primaryColor
                 )
             },
             placeholder = {
@@ -84,13 +87,15 @@ fun LoginScreen(modifier: Modifier) {
             },
             maxLines = 1,
             shape = RoundedCornerShape(24.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email ),
-            colors  = OutlinedTextFieldDefaults.colors(
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = secondaryColor,
                 unfocusedBorderColor = primaryColor
             ),
             modifier = Modifier.fillMaxWidth()
         )
+
+        Spacer(modifier = Modifier.height(24.dp))
         //        password input
         OutlinedTextField(
             value = passwordInput,
@@ -98,15 +103,46 @@ fun LoginScreen(modifier: Modifier) {
             leadingIcon = {
                 Icon(
                     imageVector = ImageVector.vectorResource(R.drawable.password_icon),
-                    contentDescription = "Email"
+                    contentDescription = "Email",
+                    tint = primaryColor
                 )
             },
-            placeholder = {
-                Text(text = "eg. jd@example.com")
+            label = {
+                Text(text = "Password")
+            },
+            visualTransformation = if (isVisible) {
+                VisualTransformation.None
+            } else {
+                PasswordVisualTransformation()
+            },
+            trailingIcon = {
+                IconButton(
+                    onClick = { isVisible = !isVisible }
+                ) {
+                    if (isVisible) {
+                        Icon(
+                            imageVector = ImageVector.vectorResource(R.drawable.outline_visibility_off_24),
+                            contentDescription = "Password"
+                        )
+                    } else {
+                        Icon(
+                            imageVector = ImageVector.vectorResource(R.drawable.outline_visibility_24),
+                            contentDescription = "Password"
+                        )
+                    }
+                }
             },
             maxLines = 1,
+            shape = RoundedCornerShape(24.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = secondaryColor,
+                unfocusedBorderColor = primaryColor
+            ),
             modifier = Modifier.fillMaxWidth()
         )
+
+        Spacer(modifier = Modifier.height(24.dp))
         //        button
         OutlinedButton(
             onClick = {}
