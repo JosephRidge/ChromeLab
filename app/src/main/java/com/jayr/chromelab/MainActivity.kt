@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.jayr.chromelab.ui.screens.authentication.forgotpassword.ForgotPasswordScreen
+import com.jayr.chromelab.ui.screens.authentication.login.LoginScreen
 import com.jayr.chromelab.ui.theme.ChromeLabTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ChromeLabTheme {
                 Scaffold (modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ForgotPasswordScreen(modifier = Modifier.padding(innerPadding))
+                    LoginScreen(modifier = Modifier.padding(innerPadding))
                  }
             }
         }
