@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
@@ -38,6 +40,7 @@ import androidx.compose.ui.unit.sp
 import com.jayr.chromelab.R
 import com.jayr.chromelab.ui.components.LottieAnimationWidget
 import com.jayr.chromelab.ui.components.pagePadding
+import com.jayr.chromelab.ui.theme.darkColor
 import com.jayr.chromelab.ui.theme.primaryColor
 import com.jayr.chromelab.ui.theme.secondaryColor
 
@@ -145,7 +148,13 @@ fun LoginScreen(modifier: Modifier) {
         Spacer(modifier = Modifier.height(24.dp))
         //        button
         OutlinedButton(
-            onClick = {}
+            onClick = {},
+            border = ButtonDefaults.outlinedButtonBorder(enabled = false),
+            colors = ButtonDefaults.outlinedButtonColors(
+                contentColor = darkColor,
+                containerColor = primaryColor,
+            ),
+            modifier = Modifier.padding(horizontal = 24.dp)
         ) {
             Text(
                 text = "login",
@@ -155,8 +164,14 @@ fun LoginScreen(modifier: Modifier) {
 
 //             row
         Row() {
-            Text(text = "Forgot Password")
-            Text(text = "No account?")
+            Text(text = "Forgot Password"
+                , style = TextStyle(
+                fontSize = 12.sp
+            ))
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "No account?", style = TextStyle(
+                fontSize = 12.sp
+            ))
         }
     }
 }
