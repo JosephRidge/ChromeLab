@@ -73,7 +73,6 @@ fun LoginScreen(modifier: Modifier) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-
         //        email input
         OutlinedTextField(
             value = emailInput,
