@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import com.jayr.chromelab.ui.navigation.AppNavigation
 import com.jayr.chromelab.ui.screens.authentication.forgotpassword.ForgotPasswordScreen
 import com.jayr.chromelab.ui.screens.authentication.login.LoginScreen
 import com.jayr.chromelab.ui.theme.ChromeLabTheme
@@ -23,8 +25,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ChromeLabTheme {
+                val navController = rememberNavController()
                 Scaffold (modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginScreen(modifier = Modifier.padding(innerPadding))
+                    AppNavigation(navController, modifier= Modifier.padding(innerPadding))
                  }
             }
         }
