@@ -37,6 +37,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.jayr.chromelab.R
 import com.jayr.chromelab.ui.components.LottieAnimationWidget
 import com.jayr.chromelab.ui.components.pagePadding
@@ -45,7 +47,7 @@ import com.jayr.chromelab.ui.theme.primaryColor
 import com.jayr.chromelab.ui.theme.secondaryColor
 
 @Composable
-fun LoginScreen(modifier: Modifier) {
+fun LoginScreen(navController: NavHostController, modifier: Modifier) {
 //     inputs
     var emailInput by remember { mutableStateOf(TextFieldValue("")) }
     var passwordInput by remember { mutableStateOf(TextFieldValue("")) }

@@ -1,6 +1,6 @@
 package com.jayr.chromelab.ui.navigation
 
-enum class Routes {
+enum class ROUTES {
     Login,
     Signup,
     ForgotPassword,
